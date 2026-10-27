@@ -7,27 +7,23 @@
 
 ## Reddit: weekly self-promotion thread
 
-Disclosure: I maintain Local Agent Bridge, a small MIT-licensed tool for local
-Codex-to-OpenCode task handoffs.
+Disclosure: I maintain Local Agent Bridge, an MIT-licensed Python tool for
+handing work from a local assistant such as Codex to OpenCode.
 
-It is for people who already use a local AI assistant with terminal access and
-want it to pass work to OpenCode. A UTF-8 task file starts a separate OpenCode
-run. The bridge records a task ID, start and exit status, and provides a shared
-message board for coordination between assistants.
+The workflow is a UTF-8 task file -> a separate OpenCode run -> a task ID with
+start/exit status. A shared local board keeps handoffs, blockers and notes in
+one place. It is for assistants that already have terminal access on the PC.
 
-The bridge itself has no subscription, monthly call quota or cap on task
-launches. Model-provider and AI-client limits still apply. It uses Python's
-standard library and is tested on Windows/Linux with Python 3.10 and 3.13.
+The bridge has no call quota or task-launch cap. Your model/client limits still
+apply. Windows/Linux CI covers Python 3.10 and 3.13. There is also a reproducible
+offline demo using a Python test executor, so you can check the handoff without
+calling a model.
 
-The README includes a reproducible offline demo. It uses a local Python test
-executor, not an LLM, so you can test the handoff without a provider account.
-Regular task execution uses your existing OpenCode configuration.
+Code, setup and demo: https://github.com/pulvasnecov-hash/local-agent-bridge
+First release: https://github.com/pulvasnecov-hash/local-agent-bridge/releases/tag/v0.1.0
 
-Code: https://github.com/pulvasnecov-hash/local-agent-bridge
-Release and demo video: https://github.com/pulvasnecov-hash/local-agent-bridge/releases/tag/v0.1.0
-
-I would appreciate first-run feedback: did installation work, could you launch
-your first task, and which part of the handoff was confusing?
+I am looking for first-run feedback: did setup work, did your first handoff
+complete, and what was confusing? Please include your OS if you try it.
 
 ## Discord: relevant OpenCode community channel
 
