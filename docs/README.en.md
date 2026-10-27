@@ -1,35 +1,52 @@
 # Local Agent Bridge
 
-**A free local alternative to Desktop Commander Remote for task handoff,
-with no bridge-imposed call quotas.**
+[![Tests](https://github.com/pulvasnecov-hash/local-agent-bridge/actions/workflows/tests.yml/badge.svg)](https://github.com/pulvasnecov-hash/local-agent-bridge/actions/workflows/tests.yml)
+[![MIT](https://img.shields.io/badge/license-MIT-blue.svg)](../LICENSE)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB)
+![Platforms](https://img.shields.io/badge/Windows%20%7C%20Linux-tested-2ea44f)
 
-For AI assistants that already have authorized terminal access on your computer:
-hand UTF-8 task files to OpenCode and coordinate through a shared message board.
-The bridge is MIT-licensed and free to use, with no bridge subscription,
-call meter, monthly quota or cap on task launches. Windows and Linux are tested.
+**Hand work from Codex to OpenCode and keep execution in view.**
 
-**Unlimited refers to the bridge's usage quotas.** Your AI client, OpenCode
-and model provider may have their own pricing, subscriptions and usage limits.
+Local Agent Bridge connects terminal-capable AI assistants through task files
+and a shared message board. Your assistant hands off a task, OpenCode runs it
+on your computer, and the bridge records its start and exit code under one task ID.
 
-[Русская документация](../README.md) · [Security boundaries](../SECURITY.md)
+**A free local alternative to Desktop Commander Remote for task handoff.
+Bridge calls and task launches are unlimited.** The source is MIT-licensed.
+Your assistant needs existing local terminal access. Model and AI-client
+pricing and usage limits still apply.
 
-## How it compares to Desktop Commander
+**[Download source](https://github.com/pulvasnecov-hash/local-agent-bridge/archive/refs/heads/main.zip)** ·
+[Quick start](#quick-start) · [Русская документация](../README.md) ·
+[Agent instructions](AGENT_INSTRUCTIONS.md)
 
-If your local assistant already reads files and runs commands, this bridge
-provides task handoff to OpenCode without using Desktop Commander Remote.
-That service's call quota does not apply to this independent local route.
-There is no monthly call quota or cap on task launches in the bridge, and task
-runtime is unlimited by default unless you configure a timeout.
+## What you get
 
-Desktop Commander's Local MCP is also free, open source and has no monthly
-limit. Its Remote MCP service offers quota-based and unlimited plans. See the
-[official connection options](https://desktopcommander.app/mcp/) and
-[pricing](https://desktopcommander.app/pricing/), checked on October 27, 2026.
+| Goal | What the bridge provides |
+|---|---|
+| Delegate a task | A UTF-8 task file passed to a separate OpenCode run |
+| Track execution | One task ID linking the start, exit code and failure status |
+| Coordinate assistants | A shared board for status, results and handoffs |
+| Work at your own pace | Unlimited bridge calls and an optional task timeout |
+| Move to another computer | A self-contained folder using the Python standard library |
 
-Local Agent Bridge implements a local handoff workflow. It does not provide
-a cloud-to-computer MCP server or the complete Desktop Commander toolset.
-See [what free and unlimited means](LIMITS.md), including model billing,
-client permissions and the message-size constraint.
+The board stays on your disk. The bridge itself needs no hosted service.
+Model execution uses your chosen OpenCode provider. Windows and Linux are tested.
+
+## Quick start
+
+Install Python 3.10+ and OpenCode, sign in to your provider, then:
+
+```powershell
+git clone https://github.com/pulvasnecov-hash/local-agent-bridge.git
+cd local-agent-bridge
+powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
+.\bridge.cmd send .\examples\task.txt --dry-run
+```
+
+The last command previews the task launch. Remove `--dry-run` to execute it
+using your existing OpenCode account and plan. You can also
+[download a ZIP](https://github.com/pulvasnecov-hash/local-agent-bridge/archive/refs/heads/main.zip).
 
 ## Requirements
 
@@ -38,9 +55,6 @@ client permissions and the message-size constraint.
 - A local assistant already authorized to execute commands on this computer.
 
 This integration uses the standard [OpenCode CLI](https://opencode.ai/v2/docs/cli).
-It does not provide remote access to a cloud chat or connect to the assistant's
-existing GUI conversation. Credentials, conversation history and tool sessions
-are not transferred between applications.
 
 ## Setup
 
@@ -120,6 +134,24 @@ Use `python bridge.py --config settings.json <command>` or `LAB_CONFIG` to selec
 a shared config. The child inherits its absolute path. The task working directory
 defaults to the caller's directory unless `--cwd` is supplied. Keep private task
 files in the Git-ignored `private/` directory. Local config and journals are ignored.
+
+## How it compares to Desktop Commander
+
+The bridge suits local assistants that already read files and run commands.
+Task handoff goes directly to OpenCode, so Desktop Commander Remote call quotas
+are not involved in this route.
+
+Desktop Commander's Local MCP is also free and has no monthly limit.
+See its [official connection options](https://desktopcommander.app/mcp/)
+and [pricing](https://desktopcommander.app/pricing/), checked October 27, 2026.
+
+A cloud chat needs an appropriate remote-access channel or MCP server.
+Local Agent Bridge provides local task handoff and a coordination board.
+Conversation history, credentials and tool sessions are not transferred between
+applications. The comparison covers this local workflow.
+
+Read [what free and unlimited means](LIMITS.md) and
+[the security boundaries](../SECURITY.md).
 
 ## Tests
 
