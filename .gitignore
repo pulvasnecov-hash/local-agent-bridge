@@ -1,0 +1,13 @@
+# Machine-specific settings, task inputs and runtime output
+bridge.local.json
+.local/
+private/
+*.jsonl
+*.log
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+dist/
