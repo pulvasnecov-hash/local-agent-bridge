@@ -20,3 +20,5 @@ jobs:
           python-version: ${{ matrix.python }}
       - name: Test without model calls
         run: python -m unittest discover -s tests -v
+      - name: Reproduce offline task handoff
+        run: python examples/offline_demo.py

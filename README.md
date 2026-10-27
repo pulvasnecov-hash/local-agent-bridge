@@ -17,8 +17,18 @@ Local Agent Bridge связывает локальных ИИ-помощнико
 моделей и ИИ-клиентов сохраняются.
 
 **[Скачать исходники](https://github.com/pulvasnecov-hash/local-agent-bridge/archive/refs/heads/main.zip)** ·
+[Релиз v0.1.0](https://github.com/pulvasnecov-hash/local-agent-bridge/releases/tag/v0.1.0) ·
 [Быстрый старт](#быстрый-старт) · [English](docs/README.en.md) ·
 [Инструкции для агентов](docs/AGENT_INSTRUCTIONS.md)
+
+## Посмотрите передачу задачи
+
+![Воспроизводимая проверка передачи задания](assets/demo.gif)
+
+Демо использует настоящий CLI моста и локальный тестовый исполнитель вместо
+модели. Оно отдельно проверяет созданный файл и записи в доске.
+Повторите его командой `python examples/offline_demo.py`.
+[Как устроена демонстрация](docs/DEMO.md).
 
 ## Что вы получаете
 
@@ -186,3 +196,10 @@ GitHub Actions настроен для Windows/Linux и Python 3.10/3.13.
 Подробности стандартного запуска: [документация OpenCode CLI](https://opencode.ai/v2/docs/cli).
 
 Лицензия: [MIT](LICENSE).
+
+## Помогите проверить первый запуск
+
+Попробовали мост на своём компьютере? Сообщите, удалось ли установить его и
+передать первую задачу, а также что оказалось непонятным.
+[Оставить отзыв](https://github.com/pulvasnecov-hash/local-agent-bridge/issues/new/choose).
+Можно писать на русском или английском. Для ошибок есть отдельная форма.

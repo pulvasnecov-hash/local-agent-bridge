@@ -17,8 +17,18 @@ Your assistant needs existing local terminal access. Model and AI-client
 pricing and usage limits still apply.
 
 **[Download source](https://github.com/pulvasnecov-hash/local-agent-bridge/archive/refs/heads/main.zip)** ·
+[Release v0.1.0](https://github.com/pulvasnecov-hash/local-agent-bridge/releases/tag/v0.1.0) ·
 [Quick start](#quick-start) · [Русская документация](../README.md) ·
 [Agent instructions](AGENT_INSTRUCTIONS.md)
+
+## Watch a task handoff
+
+![Reproducible offline task handoff](../assets/demo.gif)
+
+This demo runs the real bridge CLI with a local Python test executor instead
+of a model. It verifies the generated artifact and the board records separately.
+Reproduce it with `python examples/offline_demo.py`.
+[How the demo works](DEMO.md).
 
 ## What you get
 
@@ -166,3 +176,9 @@ Python 3.10/3.13; check Actions for its actual status.
 
 This project packages a previously used local assistant-to-OpenCode workflow
 without machine-specific paths or private logs. License: [MIT](../LICENSE).
+
+## Help test the first run
+
+Did installation and your first handoff work? Tell us what was confusing and
+which workflow you tried. [Share feedback or report a bug](https://github.com/pulvasnecov-hash/local-agent-bridge/issues/new/choose).
+Russian and English are welcome.

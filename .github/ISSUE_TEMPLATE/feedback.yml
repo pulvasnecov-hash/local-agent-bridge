@@ -1,0 +1,32 @@
+name: First-run feedback
+description: Tell us whether installation and the first handoff worked.
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for trying the project. Please share your actual experience; Russian or English is welcome."
+  - type: dropdown
+    id: outcome
+    attributes:
+      label: What did you try?
+      options:
+        - Offline transport demo
+        - Real OpenCode task
+        - Installation only
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: OS and Python version
+    validations:
+      required: true
+  - type: textarea
+    id: experience
+    attributes:
+      label: What worked, and what was confusing?
+    validations:
+      required: true
+  - type: textarea
+    id: usecase
+    attributes:
+      label: Which task or workflow would you use this for?

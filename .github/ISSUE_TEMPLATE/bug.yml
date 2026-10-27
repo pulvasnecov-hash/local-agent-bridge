@@ -1,0 +1,32 @@
+name: Installation or runtime problem
+description: Report a reproducible problem with the bridge.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Please omit tokens, passwords, private task files and personal paths. Russian or English is welcome."
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Windows 11, Python 3.13, OpenCode version
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the command with private paths replaced by placeholders.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Expected and actual result
+    validations:
+      required: true
+  - type: textarea
+    id: output
+    attributes:
+      label: Sanitized output
+      render: text
