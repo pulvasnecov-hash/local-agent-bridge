@@ -21,7 +21,7 @@ class BridgeTests(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory(prefix="lab test ")
         self.addCleanup(self.temp.cleanup)
-        self.directory = Path(self.temp.name)
+        self.directory = Path(self.temp.name).resolve()
         self.config_file = self.directory / "settings.json"
         self.capture = self.directory / "capture.json"
         self.fake = self.directory / "fake executor.py"
