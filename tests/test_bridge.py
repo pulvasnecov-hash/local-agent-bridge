@@ -1,5 +1,7 @@
 """Exercise real CLI/process boundaries with a local fake executor, never a model."""
 from concurrent.futures import ThreadPoolExecutor
+from contextlib import redirect_stderr
+import io
 import json
 import os
 from pathlib import Path
@@ -142,6 +144,18 @@ class BridgeTests(unittest.TestCase):
         self.assertIn("--auto", captured["args"])
         self.assertEqual(captured["args"][captured["args"].index("--model") + 1], "example/model")
         self.assertEqual(captured["cwd"], str(work))
+
+    def test_default_settings_do_not_export_a_nonexistent_config(self):
+        env = dict(self.env)
+        env.pop("LAB_CONFIG")
+        with patch.dict(os.environ, env, clear=True), patch.object(bridge, "ROOT", self.directory):
+            config = bridge.load_config()
+            args = bridge.parser().parse_args(["send", str(self.task_file)])
+            with patch.object(bridge, "resolve_command", return_value=[sys.executable, str(self.fake), "ok"]), redirect_stderr(io.StringIO()):
+                self.assertEqual(bridge.send(config, args), 0)
+        captured = json.loads(self.capture.read_text())
+        self.assertIsNone(captured["config"])
+        self.assertEqual(len(bridge.read_entries(config)), 2)
 
     def test_failed_executor_returns_exit_code_and_blocker(self):
         self.write_config(mode="fail")

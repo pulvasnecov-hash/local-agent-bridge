@@ -228,7 +228,11 @@ def send(config: dict, args: argparse.Namespace) -> int:
         return 0
     post(config, sender, "handoff", "Starting OpenCode; task content is supplied by file.", task, "opencode")
     print(f"bridge: task {task}; OpenCode output follows", file=sys.stderr)
-    env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8", LAB_CONFIG=str(config["config_path"]))
+    env = dict(os.environ, PYTHONUTF8="1", PYTHONIOENCODING="utf-8")
+    if config["config_path"].exists():
+        env["LAB_CONFIG"] = str(config["config_path"])
+    else:
+        env.pop("LAB_CONFIG", None)
     process = None
     try:
         process = subprocess.Popen(command, cwd=cwd, env=env, stdin=subprocess.DEVNULL,
